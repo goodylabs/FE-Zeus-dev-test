@@ -6,20 +6,20 @@
 ## DESCRIPTION
 Create **SPA** (Single Page Application) to present weather data.
 App features:
-1. Display a current weather for City (Łódź):
+1. Display current weather for the city Łódź:
   - current time
   - current temperature
   - weather icon (you can use EMOJI for example or other free stuff like https://tablericons.com/)
   - wind speed
-  - wind directrion
-  - pressure
+  - wind direction
+  - Atmospheric pressure
   - humidity
 2. Historical (last 5 days) weather data presented on chart
 3. Location search - input for typing location.
 4. Selecting location:
-  - same as for current weather, but for selected location. It would be nice if there'll be historical chart too.
+  - same as for current weather, but for selected location. It would be nice if there was historical chart too.
 
-If you have idea for some extra features, feel free to provide them.
+If you have an idea for other features, feel free to introduce them.
 
 
 ## REQUIREMENTS
