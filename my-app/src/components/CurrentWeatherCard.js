@@ -19,7 +19,7 @@ export default function CurrentWeatherCard(props) {
     useEffect(() => {
         axios.get(`http://api.weatherstack.com/current?access_key=5a3c133d73caaa7d24068be5c453aedb&query=${props.city}`)
             .then(res => setData(res.data))
-    }, []);
+    });
 
 
     if (!data)
