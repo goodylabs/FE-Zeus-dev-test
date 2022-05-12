@@ -2,10 +2,11 @@ import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import MainLayout from './layout/MainLayout';
+import CurrentWeather from './pages/CurrentWeather';
 
 function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<CurrentWeather />} />
@@ -14,15 +15,7 @@ function App() {
           <Route path="locationSelection" element={<LocationSelection />} />
         </Route>
       </Routes>
-    </div>
-  );
-}
-
-function CurrentWeather() {
-  return (
-    <div>
-      <h2>Current weather</h2>
-    </div>
+    </>
   );
 }
 

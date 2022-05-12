@@ -24,7 +24,9 @@ export default function MainLayout() {
     const [isVisible, setIsVisible] = React.useState(false);
 
     return (
-        <>
+        <Grid
+            sx={{ width: '100vw', height: '100vh', bgcolor: '#E7EBF0' }}
+        >
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
@@ -86,10 +88,10 @@ export default function MainLayout() {
             <Grid
                 container
                 justifyContent="center"
-                sx={{ width: 1 }}
+                p={2}
             >
                 <Outlet />
             </Grid>
-        </>
+        </Grid>
     );
 }
