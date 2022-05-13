@@ -13,6 +13,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
+import AirIcon from '@mui/icons-material/Air';
+import ExploreIcon from '@mui/icons-material/Explore';
+import SpeedIcon from '@mui/icons-material/Speed';
+import OpacityIcon from '@mui/icons-material/Opacity';
+
 export default function CurrentWeatherCard(props) {
     const [data, setData] = useState(null);
 
@@ -57,18 +62,30 @@ export default function CurrentWeatherCard(props) {
                             />
                         </ListItem>
                         <ListItem>
+                            <ListItemIcon>
+                                <AirIcon />
+                            </ListItemIcon>
                             <ListItemText primary={`Wind speed: ${data.wind.speed} km/h`} />
                         </ListItem>
 
                         <ListItem>
+                            <ListItemIcon>
+                                <ExploreIcon />
+                            </ListItemIcon>
                             <ListItemText primary={`Wind direction: ${data.wind.deg}\u00b0`} />
                         </ListItem>
 
                         <ListItem>
+                            <ListItemIcon>
+                                <SpeedIcon />
+                            </ListItemIcon>
                             <ListItemText primary={`Atmospheric pressure: ${data.main.pressure} hPa`} />
                         </ListItem>
 
                         <ListItem>
+                            <ListItemIcon>
+                                <OpacityIcon />
+                            </ListItemIcon>
                             <ListItemText primary={`Humidity: ${data.main.humidity}%`} />
                         </ListItem>
                     </List>
