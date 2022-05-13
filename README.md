@@ -24,7 +24,7 @@ If you have an idea for other features, feel free to introduce them.
 
 ## REQUIREMENTS
 1. React.js ( you can use CRA if you want to )
-2. Data delivery - REST API => https://weatherstack.com/documentation
+2. Data delivery - REST API => https://openweathermap.org/api 
 
 ## HINTS / RECOMMENDATIONS
 1. Use some state manager or react-query
