@@ -17,9 +17,9 @@ export default function CurrentWeatherCard(props) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://api.weatherstack.com/current?access_key=5a3c133d73caaa7d24068be5c453aedb&query=${props.city}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=91f5ed88ff4adb51496e243844b9f75a&units=metric`)
             .then(res => setData(res.data))
-    });
+    }, []);
 
 
     if (!data)
@@ -30,12 +30,12 @@ export default function CurrentWeatherCard(props) {
                 <CardHeader
                     title={
                         <Typography variant="h5" component="div">
-                            {data.request.query}
+                            {data.name}
                         </Typography>
                     }
                     subheader={
                         <Typography color="text.secondary">
-                            (lat: {data.location.lat}, lon: {data.location.lon})
+                            (lat: {data.coord.lat}, lon: {data.coord.lon})
             </Typography>
                     }
                 />
@@ -45,31 +45,31 @@ export default function CurrentWeatherCard(props) {
                         <ListItem>
                             <ListItemIcon>
                                 <ListItemAvatar>
-                                    <Avatar alt="weather_icon" src={`${data.current.weather_icons[0]}`} />
+                                    <Avatar alt="weather_icon" src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} variant="square" />
                                 </ListItemAvatar>
                             </ListItemIcon>
                             <ListItemText
                                 primary={
                                     <Typography variant="h5" component="div">
-                                        {data.current.temperature + '\u00b0C'}
+                                        {Math.round(data.main.temp) + '\u00b0C'}
                                     </Typography>}
-                                secondary={data.location.localtime}
+                                secondary={new Date(data.dt * 1000).toISOString().substr(11, 8)}
                             />
                         </ListItem>
                         <ListItem>
-                            <ListItemText primary={`Wind speed: ${data.current.wind_speed} km/h`} />
+                            <ListItemText primary={`Wind speed: ${data.wind.speed} km/h`} />
                         </ListItem>
 
                         <ListItem>
-                            <ListItemText primary={"Wind direction: " + data.current.wind_dir} />
+                            <ListItemText primary={`Wind direction: ${data.wind.deg}\u00b0`} />
                         </ListItem>
 
                         <ListItem>
-                            <ListItemText primary={"Atmospheric pressure: " + data.current.pressure + " MB"} />
+                            <ListItemText primary={`Atmospheric pressure: ${data.main.pressure} hPa`} />
                         </ListItem>
 
                         <ListItem>
-                            <ListItemText primary={"Humidity: " + data.current.humidity + "%"} />
+                            <ListItemText primary={`Humidity: ${data.main.humidity}%`} />
                         </ListItem>
                     </List>
 

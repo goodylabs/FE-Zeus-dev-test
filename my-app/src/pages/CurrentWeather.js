@@ -8,7 +8,7 @@ export default function CurrentWeather() {
         return (
             <Grid container justifyContent="center">
                 <Grid item lg={3} md={6} sm={8}>
-                    <CurrentWeatherCard city={'Lodz'} />
+                    <CurrentWeatherCard lat={51.759445} lon={19.457216} />
                 </Grid>
             </Grid>
         );
