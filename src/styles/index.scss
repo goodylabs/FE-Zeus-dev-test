@@ -1,0 +1,45 @@
+@import "./variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    color: $gray-200;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: $blue-gray-100;
+    font-family: "Roboto", sans-serif;
+}
+
+input {
+    border-radius: 10px;
+    border: $gray-200 solid 1px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: $orange-300;
+    color: $white;
+    font-weight: bold;
+}
