@@ -24,7 +24,7 @@ export default function CurrentWeatherCard(props) {
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=91f5ed88ff4adb51496e243844b9f75a&units=metric`)
             .then(res => setData(res.data))
-    }, []);
+    }, [props.lat, props.lon]);
 
 
     if (!data)
