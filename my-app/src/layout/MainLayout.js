@@ -25,7 +25,7 @@ export default function MainLayout() {
 
     return (
         <Grid
-            sx={{ width: '100vw', height: '100vh', bgcolor: '#E7EBF0' }}
+            sx={{ width: '100vw', minHeight: '100vh', bgcolor: '#E7EBF0' }}
         >
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">

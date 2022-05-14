@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import MainLayout from './layout/MainLayout';
 import CurrentWeather from './pages/CurrentWeather';
+import HistoricalWeather from './pages/HistoricalWeather';
 
 function App() {
   return (
@@ -16,14 +17,6 @@ function App() {
         </Route>
       </Routes>
     </>
-  );
-}
-
-function HistoricalWeather() {
-  return (
-    <div>
-      <h2>Historical weather</h2>
-    </div>
   );
 }
 
