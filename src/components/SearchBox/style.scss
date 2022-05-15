@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+
+div.searchbox-wrapper {
+    display: flex;
+    gap: 10px;
+
+    .input-wrapper {
+        position: relative;
+
+        .spinner-wrapper {
+            align-self: center;
+
+            span {
+                font-size: 1.5rem;
+            }
+        }
+
+        .search-items {
+            display: none;
+            flex-direction: column;
+
+            width: 100%;
+            padding: 0.5rem 0;
+            overflow: hidden;
+            position: absolute;
+            top: 100%;
+
+            background-color: $white;
+            border: $gray-200 solid 1px;
+            border-radius: 10px;
+
+            .search-item {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.5rem 1rem;
+
+                &:not(.no-result) {
+                    cursor: pointer;
+
+                    span:last-of-type {
+                        text-align: right;
+                    }
+
+                    &:hover {
+                        background-color: $blue-gray-100;
+                    }
+                }
+            }
+
+            &.visible {
+                display: flex;
+            }
+        }
+    }
+}

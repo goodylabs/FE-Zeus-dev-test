@@ -1,0 +1,20 @@
+@import "../../../styles/variables.scss";
+
+div.weather-history-wrapper {
+    width: 100%;
+    max-width: 1200px;
+
+    .card-body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .line-chart-wrapper {
+            width: 100%;
+
+            @include md {
+                width: calc(50% - 1rem);
+            }
+        }
+    }
+}

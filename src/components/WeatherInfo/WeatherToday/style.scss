@@ -1,0 +1,91 @@
+@import "../../../styles/variables.scss";
+
+div.weather-today-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 450px;
+
+    .detail {
+        background-color: $blue-gray-100;
+        border-bottom: $gray-100 solid 2px;
+        border-radius: 5px;
+        padding: 0.5rem;
+    }
+
+    .row {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: flex-start;
+
+        @include md {
+            justify-content: space-between;
+        }
+
+        .current-weather {
+            text-align: center;
+            p {
+                font-weight: bold;
+            }
+        }
+
+        .basic-data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .current-time-wrapper {
+                padding-top: 1rem;
+                justify-content: space-between;
+            }
+
+            .basic-details {
+                display: flex;
+                gap: 10px;
+                padding: 1rem 0;
+
+                .detail {
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        color: $gray-300;
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .advanced-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 0.3rem 0;
+
+        @include md {
+            justify-content: flex-end;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+
+            p.label {
+                font-weight: bold;
+                &::after {
+                    content: ":";
+                    padding-right: 5px;
+                }
+            }
+
+            p {
+                color: $gray-300;
+            }
+        }
+    }
+}
