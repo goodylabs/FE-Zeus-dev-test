@@ -1,11 +1,11 @@
 import React from "react";
-import Index from "./pages/index/index";
+import WeatherPage from "./pages/weatherPage";
 import "./styles/index.scss";
 
 function App() {
     return (
         <div className="App">
-            <Index />
+            <WeatherPage />
         </div>
     );
 }

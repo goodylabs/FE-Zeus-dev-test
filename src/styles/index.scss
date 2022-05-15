@@ -39,7 +39,9 @@ button {
     cursor: pointer;
     border: none;
     border-radius: 10px;
+    border-bottom: $gray-100 solid 2px;
     background-color: $orange-300;
     color: $white;
+    font-size: 1rem;
     font-weight: bold;
 }

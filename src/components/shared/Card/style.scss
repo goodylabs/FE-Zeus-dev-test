@@ -1,0 +1,14 @@
+@import "../../../styles/variables.scss";
+
+div.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    box-shadow: rgba($gray-300, 0.3) 0 0 5px;
+    padding: 1rem;
+    border-radius: 10px;
+
+    div.card-header {
+        padding-bottom: 1rem;
+    }
+}

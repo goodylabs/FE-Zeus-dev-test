@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
 const getWeatherData = (data) => ({
     time: data.dt,
     temp: data.feels_like,
-    weather: data.weather,
+    weather: data.weather[0],
     wind: {
         speed: data.wind_speed,
         direction: data.wind_deg,
@@ -37,6 +37,7 @@ export const getWeatherForCity = async (city) => {
                 params: {
                     lat,
                     lon,
+                    units: "metric",
                     dt: moment().subtract(i, "days").unix(),
                     appid: API_KEY,
                 },
