@@ -7,10 +7,8 @@ const getWeatherData = (data) => ({
     time: data.dt,
     temp: data.feels_like,
     weather: data.weather[0],
-    wind: {
-        speed: data.wind_speed,
-        direction: data.wind_deg,
-    },
+    windSpeed: data.wind_speed,
+    windDirection: data.wind_deg,
     pressure: data.pressure,
     humidity: data.humidity,
 });

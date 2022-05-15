@@ -23,7 +23,7 @@ const WeatherToday = ({ data, city }) => {
                         </div>
                         <div className="detail">
                             <span className="material-symbols-outlined">air</span>
-                            <p>{data.wind.speed} m/s (N)</p>
+                            <p>{data.windSpeed} m/s (N)</p>
                         </div>
                     </div>
                 </div>

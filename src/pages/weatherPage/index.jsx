@@ -12,7 +12,7 @@ const WeatherPage = () => {
     const handleSubmit = async () => {
         const [now, history] = await getWeatherForCity(city);
         setWeatherNow(now);
-        setWeatherHistory(history);
+        setWeatherHistory(history.flat().filter((_, index) => !(index % 2)));
     };
 
     useEffect(() => {
