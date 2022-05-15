@@ -1,23 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import { getGeolocationForCity, getWeatherForCity } from "../../actions/weatherActions";
+import React, { useContext, useEffect } from "react";
+import { getWeatherForCity } from "../../actions/weatherActions";
+import SearchBox from "../../components/SearchBox";
 import WeatherInfo from "../../components/WeatherInfo";
 import { dataContext } from "../../context/weatherContext";
 import "./style.scss";
 
 const WeatherPage = () => {
-    const [city, setCity] = useState("Łódź");
     const {
         state: { location },
         dispatch,
     } = useContext(dataContext);
-
-    const handleSubmit = async () => {
-        getGeolocationForCity(city, dispatch);
-    };
-
-    useEffect(() => {
-        handleSubmit();
-    }, []);
 
     useEffect(() => {
         if (location.lat && location.lon) {
@@ -29,14 +21,7 @@ const WeatherPage = () => {
         <section className="main-page">
             <h1>☀️ Weather App ☀️</h1>
             <p>Insert your city to get last 5 days history of the weather.</p>
-            <div>
-                <input
-                    type="text"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                />
-                <button onClick={handleSubmit}>Check weather!</button>
-            </div>
+            <SearchBox />
             <WeatherInfo />
         </section>
     );

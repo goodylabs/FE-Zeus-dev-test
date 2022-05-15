@@ -39,8 +39,8 @@ const DataProvider = ({ children }) => {
     const [state, dispatch] = useReducer(dataReducer, {
         location: {
             city: "Łodź",
-            lat: null,
-            lon: null,
+            lat: 51.7687323,
+            lon: 19.4569911,
         },
         weather: null,
         loading: false,
