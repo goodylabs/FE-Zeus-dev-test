@@ -42,7 +42,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
       onError: (err: Error) => {
         setError(err.message);
       },
-      enabled: false,
+      // enabled: false,
     })),
   );
 
