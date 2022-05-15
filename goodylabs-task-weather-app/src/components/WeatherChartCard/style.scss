@@ -1,0 +1,12 @@
+.weather-chart-card-container {
+   border: 2px solid rgb(58, 138, 38);
+   border-radius: 15px;
+   margin-left: 5px;
+   margin-right: 5px;
+   background-color: rgb(143, 219, 124);
+
+   p.weather-chart-temperature {
+      font-size: 1.4rem;
+      font-weight: bold;
+   }
+}
