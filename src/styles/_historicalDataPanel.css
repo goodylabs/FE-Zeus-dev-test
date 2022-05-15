@@ -1,0 +1,37 @@
+.historical-data {
+  width: 100%;
+  margin-top: 4vw;
+}
+
+.historical-data-container {
+  display: flex;
+}
+
+.historical-data-day {
+  width: calc(95% / 5);
+  border-radius: 10px;
+  height: 18vw;
+  border: 1px gray solid;
+  margin: 0 0.5vw;
+}
+
+.historical-data span {
+  justify-content: center;
+  height: 3vw;
+}
+
+.historical-data-parameter .icon-tabler {
+  width: 2vw;
+  height: 2vw;
+  padding: 0.1vw;
+}
+
+.historical-data-parameter .icon-tabler-temperature-celsius {
+  width: 1.8vw !important;
+  height: 1.8vw !important;
+}
+
+canvas {
+  margin-top: 4vw;
+  margin-bottom: 1vw;
+}

@@ -1,0 +1,109 @@
+.data {
+  margin-top: 1.2vw;
+}
+
+.data-container {
+  width: 50vw;
+  padding-left: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 3vw;
+}
+
+.data-temp-icon {
+  width: 100%;
+  display: flex;
+}
+
+.data-icon {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.data-icon svg {
+  width: 5.5vw;
+  height: 5.5vw;
+}
+
+.icon-tabler-sun {
+  stroke: rgb(245, 221, 1) !important;
+}
+
+.icon-tabler-snowflake {
+  stroke: white !important;
+}
+
+.icon-tabler-mist {
+  stroke: grey !important;
+}
+
+.data-parameter {
+  display: block;
+  width: 20vw;
+  padding: 1vw;
+  font-size: 2vw;
+}
+
+.data-temparature {
+  font-size: 4vw;
+  padding-bottom: 0;
+}
+
+span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon-tabler {
+  width: 3.5vw;
+  height: 3.5vw;
+  stroke: black;
+  padding: 0.5vw;
+}
+
+.icon-tabler-temperature-celsius {
+  width: 4.5vw;
+  height: 4.5vw;
+  padding: 0.1vw;
+}
+
+.icon-tabler-map-pin {
+  width: 1.5vw;
+  height: 1.5vw;
+}
+
+.icon-tabler-degree {
+  width: 2.2vw;
+  height: 2.2vw;
+  padding: 0.1vw;
+}
+
+.data-four-parameters {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.data-one-of-four {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.data-one-of-four p {
+  font-size: 1.5vw;
+  padding: 0.2vw;
+  margin: 0;
+}
+
+.data-one-of-four h1 {
+  font-size: 1.5vw;
+  font-weight: normal;
+}
