@@ -3,6 +3,9 @@ import axios from 'axios';
 const access_key = process.env.REACT_APP_API_KEY;
 
 export async function getDirection(direction) {
+  if (direction === '') {
+    return 0;
+  }
   const coord = await axios.get(
     `https://api.openweathermap.org/geo/1.0/direct?q=${direction}&limit=0&appid=${access_key}`
   );
