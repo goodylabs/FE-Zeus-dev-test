@@ -1,7 +1,7 @@
 import "./App.scss";
 import WeatherPanel from "./components/WeatherPanel";
 import Sidebar from "./components/Sidebar";
-import { getCurrentWeather } from "./actions/currentWeatherActions";
+import { getCurrentWeather, getHistoryWeather } from "./actions/weatherActions";
 import { useEffect, useContext } from "react";
 import { appContext } from "./AppContext";
 
@@ -16,8 +16,15 @@ const App = () => {
                 "metric"
             );
             dispatch({ type: "SET_CURRENT_WEATHER_DATA", payload: currentWeatherData });
+            const historyWeatherData = await getHistoryWeather(
+                state.currentLocation.lat,
+                state.currentLocation.lon,
+                "metric"
+            );
+            dispatch({ type: "SET_HISTORY_WEATHER_DATA", payload: historyWeatherData });
         };
         getData();
+        console.log(state);
     }, [state.currentLocation]);
 
     return (

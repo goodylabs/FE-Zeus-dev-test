@@ -10,9 +10,10 @@ const appReducer = (state, action) => {
             };
         }
         case "SET_HISTORY_WEATHER_DATA": {
+            console.log(action);
             return {
                 ...state,
-                historyWeatherData: action.payload.historyWeatherData,
+                historyWeatherData: action.payload,
             };
         }
         case "SET_CURRENT_LOCATION": {
@@ -28,7 +29,7 @@ const appContext = createContext();
 const AppProvider = ({ children }) => {
     const initialState = {
         currentWeatherData: undefined,
-        historyWeatherData: [{}, {}, {}, {}, {}],
+        historyWeatherData: undefined,
         currentLocation: {
             country: "PL",
             lat: 51.7687323,
