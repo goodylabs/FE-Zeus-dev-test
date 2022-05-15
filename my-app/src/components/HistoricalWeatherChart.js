@@ -27,10 +27,17 @@ export default function HistoricalWeatherChart(props) {
         return <h2>Loading...</h2>
     else
         return (
-            <div>
+            <>
                 <Line
                     options={{
                         responsive: true,
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                left: 25,
+                                right: 25
+                            }
+                        },
                         plugins: {
                             legend: {
                                 position: 'top',
@@ -53,6 +60,6 @@ export default function HistoricalWeatherChart(props) {
                         ],
                     }}
                 />
-            </div>
+            </>
         );
 }

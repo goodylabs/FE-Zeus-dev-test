@@ -52,7 +52,10 @@ export default function MainLayout() {
                 open={isVisible}
                 onClose={() => setIsVisible(false)}
             >
-                <List onClick={() => setIsVisible(false)}>
+                <List 
+                    onClick={() => setIsVisible(false)}
+                    sx={{ p: 2 }}    
+                >
 
                     <ListItem button component={Link} to="/">
                         <ListItemIcon>
@@ -88,7 +91,7 @@ export default function MainLayout() {
             <Grid
                 container
                 justifyContent="center"
-                p={2}
+                p={3}
             >
                 <Outlet />
             </Grid>

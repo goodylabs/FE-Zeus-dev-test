@@ -41,7 +41,7 @@ export default function CurrentWeatherCard(props) {
                     subheader={
                         <Typography color="text.secondary">
                             (lat: {data.coord.lat}, lon: {data.coord.lon})
-            </Typography>
+                        </Typography>
                     }
                 />
 

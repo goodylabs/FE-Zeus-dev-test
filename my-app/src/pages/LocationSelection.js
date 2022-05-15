@@ -18,8 +18,11 @@ export default function LocationSelection() {
 
     return (
         <Grid container justifyContent="center">
-            <Grid container item md={8} sm={10} justifyContent="center" textAlign="center" alignItems="center">
-                <FormControl fullWidth>
+            <Grid container item md={8} sm={10} justifyContent="center" alignItems="center" >
+                <FormControl 
+                    fullWidth
+                    sx={{ mb: 1 }}
+                >
                     <InputLabel>City</InputLabel>
                     <Select
                         value={selectedCity}
@@ -37,7 +40,7 @@ export default function LocationSelection() {
                         <Grid item item lg={4} sm={12}>
                             <CurrentWeatherCard lat={selectedCity.lat} lon={selectedCity.lon} />
                         </Grid>
-                        <Grid item item lg={8} sm={12}>
+                        <Grid item item lg={8} sm={12} minHeight={300}>
                             <HistoricalWeatherChart lat={selectedCity.lat} lon={selectedCity.lon} />
                         </Grid>
                     </>
