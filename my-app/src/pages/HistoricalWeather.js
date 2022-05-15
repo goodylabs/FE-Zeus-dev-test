@@ -4,7 +4,7 @@ import HistoricalWeatherChart from '../components/HistoricalWeatherChart';
 
 export default function HistoricalWeather() {
     return (
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" textAlign="center">
             <Grid item md={8} sm={10} minHeight={300}>
                 <HistoricalWeatherChart lat={51.759445} lon={19.457216} />
             </Grid>

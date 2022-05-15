@@ -24,8 +24,9 @@ export default function LocationSearch() {
 
     const addCity = (e) => {
         e.preventDefault();
-        axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=91f5ed88ff4adb51496e243844b9f75a`)
+        axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=a1b3aa55dfdd1a4c2918936703528115`)
             .then(res => {
+                console.log('fetched');
                 setError('');
                 const data = res.data;
                 if (!data.length) {
@@ -33,6 +34,10 @@ export default function LocationSearch() {
                     return;
                 }
                 saveCity(data[0]);
+                setOpen(true);
+            })
+            .catch(() => {
+                setError('Error');
                 setOpen(true);
             })
     }

@@ -20,14 +20,18 @@ import OpacityIcon from '@mui/icons-material/Opacity';
 
 export default function CurrentWeatherCard(props) {
     const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=91f5ed88ff4adb51496e243844b9f75a&units=metric`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=a1b3aa55dfdd1a4c2918936703528115&units=metric`)
             .then(res => setData(res.data))
+            .catch(err => setError(err))
     }, [props.lat, props.lon]);
 
 
-    if (!data)
+    if (error)
+        return <h2>Error</h2>
+    else if (!data)
         return <h2>Loading...</h2>
     else
         return (
