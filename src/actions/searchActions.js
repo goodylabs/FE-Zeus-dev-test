@@ -3,7 +3,7 @@ import axios from "axios";
 const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
 
 export const findCities = async (name) => {
-    const response = await axios.get("http://api.openweathermap.org/geo/1.0/direct", {
+    const response = await axios.get("/geo/1.0/direct", {
         params: {
             q: name,
             limit: 6,

@@ -9,6 +9,15 @@ const WeatherToday = () => {
     const data = state.weather.now;
     const city = state.location.city;
 
+    let direction = "N";
+    if (data.windDirection >= 270) {
+        direction = "W";
+    } else if (data.windDirection >= 180) {
+        direction = "S";
+    } else if (data.windDirection >= 90) {
+        direction = "E";
+    }
+
     return (
         <Card className="weather-today-wrapper" title={`Weather Today - ${city}`}>
             <div className="row">
@@ -28,7 +37,9 @@ const WeatherToday = () => {
                         </div>
                         <div className="detail">
                             <span className="material-symbols-outlined">air</span>
-                            <p>{data.windSpeed} m/s (N)</p>
+                            <p>
+                                {data.windSpeed} m/s ({direction})
+                            </p>
                         </div>
                     </div>
                 </div>

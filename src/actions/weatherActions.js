@@ -17,7 +17,7 @@ export const getGeolocationForCity = async (city, dispatch) => {
     dispatch({ type: "SET_LOADING" });
 
     try {
-        const response = await axios.get("http://api.openweathermap.org/geo/1.0/direct", {
+        const response = await axios.get("/geo/1.0/direct", {
             params: {
                 q: city,
                 limit: 1,

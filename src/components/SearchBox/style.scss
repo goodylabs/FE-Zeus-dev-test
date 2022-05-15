@@ -34,8 +34,16 @@ div.searchbox-wrapper {
                 justify-content: space-between;
                 padding: 0.5rem 1rem;
 
-                &:hover:not(.no-result) {
-                    background-color: $blue-gray-100;
+                &:not(.no-result) {
+                    cursor: pointer;
+
+                    span:last-of-type {
+                        text-align: right;
+                    }
+
+                    &:hover {
+                        background-color: $blue-gray-100;
+                    }
                 }
             }
 
