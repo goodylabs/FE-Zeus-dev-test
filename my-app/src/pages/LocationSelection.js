@@ -37,10 +37,10 @@ export default function LocationSelection() {
 
                 {selectedCity &&
                     <>
-                        <Grid item item lg={4} sm={12}>
+                        <Grid item lg={4} sm={12}>
                             <CurrentWeatherCard lat={selectedCity.lat} lon={selectedCity.lon} />
                         </Grid>
-                        <Grid item item lg={8} sm={12} minHeight={300}>
+                        <Grid item lg={8} sm={12} minHeight={300}>
                             <HistoricalWeatherChart lat={selectedCity.lat} lon={selectedCity.lon} />
                         </Grid>
                     </>

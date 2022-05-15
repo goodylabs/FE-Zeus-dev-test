@@ -24,7 +24,7 @@ export default function LocationSearch() {
 
     const addCity = (e) => {
         e.preventDefault();
-        axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=91f5ed88ff4adb51496e243844b9f75a`)
+        axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=91f5ed88ff4adb51496e243844b9f75a`)
             .then(res => {
                 setError('');
                 const data = res.data;
