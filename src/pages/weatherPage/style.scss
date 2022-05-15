@@ -1,9 +1,9 @@
 @import "../../styles/variables.scss";
 
 section.main-page {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
-    padding: 2rem;
+    padding: 0.5rem;
     background-color: $blue-gray-100;
 
     display: flex;
@@ -11,6 +11,10 @@ section.main-page {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+
+    @include md {
+        padding: 2rem;
+    }
 
     input {
         margin-right: 10px;

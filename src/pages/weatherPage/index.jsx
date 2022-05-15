@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { getWeatherForCity } from "../../actions/weatherActions";
-import WeatherHistory from "../../components/WeatherHistory";
-import WeatherToday from "../../components/WeatherToday";
+import React, { useContext, useEffect, useState } from "react";
+import { getGeolocationForCity, getWeatherForCity } from "../../actions/weatherActions";
+import WeatherInfo from "../../components/WeatherInfo";
+import { dataContext } from "../../context/weatherContext";
 import "./style.scss";
 
 const WeatherPage = () => {
     const [city, setCity] = useState("Łódź");
-    const [weatherNow, setWeatherNow] = useState(null);
-    const [weatherHistory, setWeatherHistory] = useState(null);
+    const {
+        state: { location },
+        dispatch,
+    } = useContext(dataContext);
 
     const handleSubmit = async () => {
-        const [now, history] = await getWeatherForCity(city);
-        setWeatherNow(now);
-        setWeatherHistory(history.flat().filter((_, index) => !(index % 2)));
+        getGeolocationForCity(city, dispatch);
     };
 
     useEffect(() => {
         handleSubmit();
     }, []);
+
+    useEffect(() => {
+        if (location.lat && location.lon) {
+            getWeatherForCity(location.lat, location.lon, dispatch);
+        }
+    }, [location.city]);
 
     return (
         <section className="main-page">
@@ -31,9 +37,7 @@ const WeatherPage = () => {
                 />
                 <button onClick={handleSubmit}>Check weather!</button>
             </div>
-
-            {weatherNow && <WeatherToday data={weatherNow} city={city} />}
-            {weatherHistory && <WeatherHistory data={weatherHistory} />}
+            <WeatherInfo />
         </section>
     );
 };

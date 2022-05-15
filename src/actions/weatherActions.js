@@ -13,20 +13,38 @@ const getWeatherData = (data) => ({
     humidity: data.humidity,
 });
 
-export const getGeolocationForCity = async (city) => {
-    const response = await axios.get("http://api.openweathermap.org/geo/1.0/direct", {
-        params: {
-            q: city,
-            limit: 1,
-            appid: API_KEY,
-        },
-    });
-    const { lat, lon } = response.data[0];
-    return [lat, lon];
+export const getGeolocationForCity = async (city, dispatch) => {
+    dispatch({ type: "SET_LOADING" });
+
+    try {
+        const response = await axios.get("http://api.openweathermap.org/geo/1.0/direct", {
+            params: {
+                q: city,
+                limit: 1,
+                appid: API_KEY,
+            },
+        });
+
+        if (response.data.length != 0) {
+            const { lat, lon } = response.data[0];
+            dispatch({ type: "SET_LOCATION", payload: { location: { city, lat, lon } } });
+            return;
+        }
+
+        dispatch({
+            type: "SET_ERROR",
+            payload: { error: "Couldn't find requested city." },
+        });
+    } catch (err) {
+        dispatch({
+            type: "SET_ERROR",
+            payload: { error: "Couldn't get requested data." },
+        });
+    }
 };
 
-export const getWeatherForCity = async (city) => {
-    const [lat, lon] = await getGeolocationForCity(city);
+export const getWeatherForCity = async (lat, lon, dispatch) => {
+    dispatch({ type: "SET_LOADING" });
 
     const historyRequests = [];
     for (let i = 1; i <= 5; i++) {
@@ -43,11 +61,20 @@ export const getWeatherForCity = async (city) => {
         );
     }
 
-    const response = await Promise.all(historyRequests);
-    const history = response.map((day) =>
-        day.data.hourly.map((hour) => getWeatherData(hour))
-    );
+    try {
+        const response = await Promise.all(historyRequests);
+        const history = response
+            .map((day) => day.data.hourly.map((hour) => getWeatherData(hour)))
+            .flat()
+            .filter((_, index) => !(index % 2));
 
-    const now = getWeatherData(response[response.length - 1].data.current);
-    return [now, history];
+        const now = getWeatherData(response[response.length - 1].data.current);
+
+        dispatch({ type: "SET_WEATHER", payload: { weather: { now, history } } });
+    } catch (err) {
+        dispatch({
+            type: "SET_ERROR",
+            payload: { error: "Couldn't get requested data." },
+        });
+    }
 };

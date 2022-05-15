@@ -1,12 +1,15 @@
 import React from "react";
-import WeatherPage from "./pages/weatherPage";
 import "./styles/index.scss";
+import WeatherPage from "./pages/weatherPage";
+import { DataProvider } from "./context/weatherContext";
 
 function App() {
     return (
-        <div className="App">
-            <WeatherPage />
-        </div>
+        <DataProvider>
+            <div className="App">
+                <WeatherPage />
+            </div>
+        </DataProvider>
     );
 }
 

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.scss";
-import CurrentTime from "../CurrentTime";
-import Card from "../shared/Card";
+import CurrentTime from "../../CurrentTime";
+import Card from "../../shared/Card";
+import { dataContext } from "../../../context/weatherContext";
 
-const WeatherToday = ({ data, city }) => {
+const WeatherToday = () => {
+    const { state } = useContext(dataContext);
+    const data = state.weather.now;
+    const city = state.location.city;
+
     return (
         <Card className="weather-today-wrapper" title={`Weather Today - ${city}`}>
             <div className="row">

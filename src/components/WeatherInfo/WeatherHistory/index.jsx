@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.scss";
-import Card from "../shared/Card";
-import LineChart from "../shared/LineChart";
+import Card from "../../shared/Card";
+import LineChart from "../../shared/LineChart";
 import moment from "moment";
+import { dataContext } from "../../../context/weatherContext";
 
 const graphsMetadata = [
     {
@@ -35,7 +36,10 @@ const graphsMetadata = [
     },
 ];
 
-const WeatherHistory = ({ data }) => {
+const WeatherHistory = () => {
+    const { state } = useContext(dataContext);
+    const data = state.weather.history;
+
     const labels = data
         .flat()
         .reverse()

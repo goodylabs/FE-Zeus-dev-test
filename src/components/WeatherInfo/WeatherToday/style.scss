@@ -1,7 +1,9 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 div.weather-today-wrapper {
     display: flex;
+    width: 100%;
+    max-width: 430px;
 
     .detail {
         background-color: $blue-gray-100;
@@ -11,9 +13,16 @@ div.weather-today-wrapper {
     }
 
     .row {
+        width: 100%;
         display: flex;
+        flex-wrap: wrap;
         gap: 2rem;
+        justify-content: center;
         align-items: flex-start;
+
+        @include md {
+            justify-content: space-between;
+        }
 
         .current-weather {
             text-align: center;
@@ -52,9 +61,14 @@ div.weather-today-wrapper {
 
     .advanced-details {
         display: flex;
-        justify-content: flex-end;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
         padding: 0.3rem 0;
+
+        @include md {
+            justify-content: flex-end;
+        }
 
         .detail {
             display: flex;
