@@ -1,0 +1,56 @@
+.current-weather-box {
+    display: flex;
+    flex-direction: row;
+    width: 32rem;
+    justify-content: space-around;
+
+    &_base-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 25rem;
+        & > div:nth-of-type(1) {
+            display: flex;
+            flex-direction: row;
+            gap: 2em;
+            justify-content: space-around;
+        }
+        &_temperature {
+            font-size: var(--font-size-7);
+            & > h1 {
+                display: inline;
+            }
+        }
+        &_weather {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &_location {
+            & > .location {
+                margin-bottom: 0.5rem;
+                font-size: var(--font-size-5);
+                overflow-wrap: break-word;
+            }
+        }
+    }
+
+    &_details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        &_label {
+            font-size: var(--font-size-1);
+            font-weight: 300;
+        }
+        &_wind {
+            & > div {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+    }
+}

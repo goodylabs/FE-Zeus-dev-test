@@ -1,0 +1,24 @@
+.clock {
+    border-style: solid;
+    border-color: white;
+    border-width: 0.2rem;
+    &_hands {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        & > div {
+            position: absolute;
+            background-color: white;
+            transform-origin: bottom center;
+            left: 50%;
+            bottom: 50%;
+            // transition: transform 0.2s ease-out;
+        }
+        &_center {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+        }
+    }
+}

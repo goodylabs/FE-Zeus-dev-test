@@ -1,0 +1,27 @@
+.history-weather-box {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    height: 100%;
+    width: 32rem;
+    position: relative;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .weather-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 4.5rem;
+        &_temperature {
+            font-size: var(--font-size-4);
+        }
+        &_day {
+            font-size: var(--font-size-2);
+        }
+    }
+}
