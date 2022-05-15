@@ -1,45 +1,41 @@
-# **FE-Zeus-dev-test**
-☁️ ⛅	⛈️ 🌤️	🌥️ 🌦️	🌧️ 🌨️	🌩️ 🌪️	🌫️ 🌬️ 🌀 🌈
+# Getting Started with Weather.io
 
-<br/><br/>
+## Available Online
 
-## DESCRIPTION
-Create **SPA** (Single Page Application) to present weather data.
-App features:
-1. Display current weather for the city Łódź:
-  - current time
-  - current temperature
-  - weather icon (you can use EMOJI for example or other free stuff like https://tablericons.com/)
-  - wind speed
-  - wind direction
-  - Atmospheric pressure
-  - humidity
-2. Historical (last 5 days) weather data presented on chart
-3. Location search - input for typing location.
-4. Selecting location:
-  - same as for current weather, but for selected location. It would be nice if there was historical chart too.
+Visit it here [Weather.io](https://weatherlo.netlify.app).
+## Available Scripts
 
-If you have an idea for other features, feel free to introduce them.
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
 
 
-## REQUIREMENTS
-1. React.js ( you can use CRA if you want to )
-2. Data delivery - REST API => https://openweathermap.org/api 
+### `npm run build`
 
-## HINTS / RECOMMENDATIONS
-1. Use some state manager or react-query
-2. Use lint and prettier to improve code style integrity
-3. Use AXIOS as HTTP client
-4. Be sure your app is free of bugs
-5. Write tests
-6. Create README file with instruction on how to get your app started
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## REGISTRATION
-1. Share your source code using Github https://github.com/goodylabs/FE-Zeus-dev-test :
-   - clone existing empty repository
-   - create your own branch, choose a name that will allow us to connect with you
-   - create new **Pull Request**
-2. Build your app and host it with some free cloud host (eg. https://www.netlify.com/, https://firebase.google.com/)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
----
-# GOOD LUCK :)
+### `npm format`
+
+Formats any file with extension .js, .jsx, .json, .css, .md.
+
+### `npm lint`
+
+Prints stylistic errors in the project
+
+### `npm lint:fix`
+
+Corrects stylistic errors in the project
