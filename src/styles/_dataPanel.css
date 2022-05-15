@@ -1,5 +1,7 @@
 .data {
   margin-top: 1.2vw;
+  display: flex;
+  justify-content: center;
 }
 
 .data-container {
