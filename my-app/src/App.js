@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from './layout/MainLayout';
 import CurrentWeather from './pages/CurrentWeather';
 import HistoricalWeather from './pages/HistoricalWeather';
+import LocationSearch from './pages/LocationSearch';
 
 function App() {
   return (
@@ -17,14 +18,6 @@ function App() {
         </Route>
       </Routes>
     </>
-  );
-}
-
-function LocationSearch() {
-  return (
-    <div>
-      <h2>Location search</h2>
-    </div>
   );
 }
 
