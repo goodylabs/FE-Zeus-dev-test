@@ -5,6 +5,7 @@ import MainLayout from './layout/MainLayout';
 import CurrentWeather from './pages/CurrentWeather';
 import HistoricalWeather from './pages/HistoricalWeather';
 import LocationSearch from './pages/LocationSearch';
+import LocationSelection from './pages/LocationSelection';
 
 function App() {
   return (
@@ -18,14 +19,6 @@ function App() {
         </Route>
       </Routes>
     </>
-  );
-}
-
-function LocationSelection() {
-  return (
-    <div>
-      <h2>Location selection</h2>
-    </div>
   );
 }
 
