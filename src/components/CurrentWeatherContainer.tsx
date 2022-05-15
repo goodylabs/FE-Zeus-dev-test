@@ -22,7 +22,7 @@ const CurrentWeatherContainer: FunctionComponent<IPropsCurrentWeatherContainer> 
   setIsLoaded,
 }) => {
   const [error, setError] = useState<string | null>(null);
-  const { isLoading, isSuccess, isError, data, refetch } = useQuery<WeatherResponse, Error>(
+  const { isLoading, isSuccess, isError, data } = useQuery<WeatherResponse, Error>(
     ['query-current-weather', location],
     async () => WeatherService.fetchCurrent(location),
     {
@@ -45,14 +45,7 @@ const CurrentWeatherContainer: FunctionComponent<IPropsCurrentWeatherContainer> 
     return <div>{error}</div>;
   }
 
-  return isSuccess ? (
-    <>
-      <button type="button" className="btn btn-primary" onClick={() => refetch()}>
-        refetch
-      </button>
-      <WeatherCard weatherReport={data} />
-    </>
-  ) : null;
+  return isSuccess ? <WeatherCard weatherReport={data} /> : null;
 };
 
 export default CurrentWeatherContainer;

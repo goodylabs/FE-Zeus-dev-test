@@ -37,6 +37,16 @@
     ],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+          "jsx-a11y/label-has-associated-control": ["error", {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }],
+      "jsx-a11y/label-has-for": ["error", {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+    }]
   }
 }

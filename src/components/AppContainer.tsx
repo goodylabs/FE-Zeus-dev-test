@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import CurrentWeatherContainer from './CurrentWeatherContainer';
-import HistoricWeatherContainer from './HistoricWeatherContainer';
+import HistoricWeatherContainer from './HistoricWeatherChart';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
-const AppContainer = () => {
+const AppContainer: FunctionComponent = () => {
   const [location, setLocation] = useState<string>('');
   const [locationToFetch, setLocationToFetch] = useState<string>('Lodz');
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -18,14 +18,15 @@ const AppContainer = () => {
   };
   return (
     <div>
-      <div className="mt-4 d-flex">
+      <div className="mt-3 d-flex">
         <input
-          className="form-control p-2"
+          className="form-control p-2 me-4 ms-2"
+          name="location"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           placeholder="provide location"
         />
-        <button type="button" className="btn btn-outline-primary justify-content-end" onClick={searchLocation}>
+        <button type="button" className="me-2 btn btn-outline-primary justify-content-end" onClick={searchLocation}>
           Search
         </button>
       </div>

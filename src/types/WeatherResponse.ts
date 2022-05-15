@@ -18,4 +18,8 @@ export default interface WeatherResponse {
     deg: number;
   };
   dt: number;
+  sys: {
+    sunset: number;
+    sunrise: number;
+  };
 }

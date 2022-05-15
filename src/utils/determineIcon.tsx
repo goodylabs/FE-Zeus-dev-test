@@ -1,7 +1,10 @@
-import { CloudRain, CloudSnow, CloudStorm, Cloud, Mist, Sun } from 'tabler-icons-react';
+import { CloudRain, CloudSnow, CloudStorm, Cloud, Mist, Sun, Moon } from 'tabler-icons-react';
 
-const determineIcon = (description: string) => {
+const determineIcon = (description: string, sunrise: number, sunset: number, dt: number) => {
   let iconToReturn = <Sun color="yellow" size="8em" />;
+  if (dt < sunrise || dt > sunset) {
+    iconToReturn = <Moon color="#d4d4d4" size="8em" />;
+  }
   switch (description) {
     case 'few clouds' || 'scattered clouds' || 'broken clouds':
       iconToReturn = <Cloud size="8em" />;

@@ -20,21 +20,34 @@ const fetchCurrent = async (query: string) => {
   return response.data;
 };
 
-const fetchHistoric = async (dates: number[], latitude: number, longitude: number) => {
-  const cummulativeResponse: Array<WeatherHistoricResponse> = [];
-  dates.forEach(async (date) => {
-    const response = await apiClient.get<WeatherHistoricResponse>('data/2.5/onecall/timemachine', {
-      params: {
-        dt: date,
-        lat: latitude,
-        lon: longitude,
-        units: 'metric',
-      },
-    });
-    cummulativeResponse.push(response.data);
+// const fetchHistoric = async (dates: number[], latitude: number, longitude: number) => {
+//   const cummulativeResponse: Array<WeatherHistoricResponse> = [];
+//   dates.forEach(async (date) => {
+//     const response = await apiClient.get<WeatherHistoricResponse>('data/2.5/onecall/timemachine', {
+//       params: {
+//         dt: date,
+//         lat: latitude,
+//         lon: longitude,
+//         units: 'metric',
+//       },
+//     });
+//     cummulativeResponse.push(response.data);
+//   });
+
+//   return cummulativeResponse;
+// };
+
+const fetchHistoric = async (date: number, latitude: number, longitude: number) => {
+  const response = await apiClient.get<WeatherHistoricResponse>('data/2.5/onecall/timemachine', {
+    params: {
+      dt: date,
+      lat: latitude,
+      lon: longitude,
+      units: 'metric',
+    },
   });
 
-  return cummulativeResponse;
+  return response.data;
 };
 
 const WeatherService = {

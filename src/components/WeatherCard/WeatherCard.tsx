@@ -22,15 +22,22 @@ const WeatherCard: FunctionComponent<IPropsWeatherCard> = ({ weatherReport }) =>
           </div>
           <div className="d-flex align-items-center">
             <h1 className="display-1 me-2">{Math.round(weatherReport.main.temp)}</h1>
-            <TemperatureCelsius className="mb-5" size="2em" />
-            <div className="ms-auto me-5">{determineIcon(weatherReport.weather.description)}</div>
+            <TemperatureCelsius className="mb-5" size="2.2em" />
+            <div className="ms-auto me-5">
+              {determineIcon(
+                weatherReport.weather.description,
+                weatherReport.sys.sunrise,
+                weatherReport.sys.sunset,
+                weatherReport.dt,
+              )}
+            </div>
           </div>
-          <div className="fs-4 mt-2">{new Date(dateObject.split(',')[0]).toLocaleDateString('en-US', dateOptions)}</div>
+          <div className="fs-4">{new Date(dateObject.split(',')[0]).toLocaleDateString('en-US', dateOptions)}</div>
           <div className="fs-2 mt-2">{dateObject.split(',')[1]}</div>
           <div className="d-flex mt-3 mb-4">
             <div className="d-flex">
-              <ArrowBigRight size="1.5em" />
-              <div className="me-3">Wind {weatherReport.wind.speed} km/h</div>
+              <ArrowBigRight style={{ transform: `rotate(${weatherReport.wind.deg}deg)` }} size="1.5em" />
+              <div className="ms-2 me-3">Wind {weatherReport.wind.speed} km/h</div>
             </div>
             <div>|</div>
             <div className="me-3 ms-3">Hum {weatherReport.main.humidity}%</div>
