@@ -2,39 +2,57 @@ import { FunctionComponent, useState } from 'react';
 import { useQuery } from 'react-query';
 import WeatherService from '../services/WeatherService';
 import WeatherResponse from '../types/WeatherResponse';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
+import WeatherCard from './WeatherCard/WeatherCard';
 
 interface IPropsCurrentWeatherContainer {
   location: string;
+  setCoordinates: React.Dispatch<
+    React.SetStateAction<{
+      longitude: number;
+      latitude: number;
+    }>
+  >;
+  setIsLoaded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CurrentWeatherContainer: FunctionComponent<IPropsCurrentWeatherContainer> = ({ location }) => {
+const CurrentWeatherContainer: FunctionComponent<IPropsCurrentWeatherContainer> = ({
+  location,
+  setCoordinates,
+  setIsLoaded,
+}) => {
   const [error, setError] = useState<string | null>(null);
-  const {
-    isLoading: isLoadingWeatherReport,
-    isSuccess: isSuccessWeatherReport,
-    isError: isErrorWeatherReport,
-    data: weatherReport,
-    refetch: smh,
-  } = useQuery<WeatherResponse, Error>(
-    'default-query-weather',
-    async () => WeatherService.fetchCurrent(`${location.length > 0 ? location : 'Lodz'}`),
+  const { isLoading, isSuccess, isError, data, refetch } = useQuery<WeatherResponse, Error>(
+    ['query-current-weather', location],
+    async () => WeatherService.fetchCurrent(location),
     {
-      enabled: false,
-      onError: (err: any) => {
-        setError(err.response?.data || error);
+      // enabled: false,
+      onSuccess: (res: WeatherResponse) => {
+        setCoordinates({ longitude: res.coord.lon, latitude: res.coord.lat });
+        setIsLoaded(true);
+      },
+      onError: (err: Error) => {
+        setError(err.message);
       },
     },
   );
 
-  if (isLoadingWeatherReport) {
-    return <div>loading</div>;
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
 
-  if (isErrorWeatherReport) {
-    return <div>error</div>;
+  if (isError) {
+    return <div>{error}</div>;
   }
 
-  return isSuccessWeatherReport ? <div>{weatherReport?.current.feelslike}</div> : null;
+  return isSuccess ? (
+    <>
+      <button type="button" className="btn btn-primary" onClick={() => refetch()}>
+        refetch
+      </button>
+      <WeatherCard weatherReport={data} />
+    </>
+  ) : null;
 };
 
 export default CurrentWeatherContainer;

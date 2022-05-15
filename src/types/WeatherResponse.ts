@@ -1,23 +1,21 @@
 export default interface WeatherResponse {
-  location: {
-    name: string;
-    country: string;
-    region: string;
-    localtime: string;
+  name: string;
+  coord: {
+    lon: number;
+    lat: number;
   };
-  current: {
-    observation_time: string;
-    temperature: number;
-    weather_descriptions: string[];
-    wind_speed: number;
-    wind_degree: number;
-    wind_dir: string;
+  weather: {
+    description: string;
+  };
+  main: {
+    temp: number;
+    feels_like: number;
     pressure: number;
-    precip: number;
     humidity: number;
-    cloudcover: number;
-    feelslike: number;
-    visibility: number;
-    is_day: string;
   };
+  wind: {
+    speed: number;
+    deg: number;
+  };
+  dt: number;
 }

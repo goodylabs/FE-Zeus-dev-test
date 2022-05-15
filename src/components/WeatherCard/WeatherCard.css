@@ -1,0 +1,7 @@
+.gradient {
+  /* fallback for old browsers */
+  background: #c471f5;
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: linear-gradient(to right top, #ff95c3, 55%, #ee71bc, #cd6bb6, #c068be, #a966bd);
+}
