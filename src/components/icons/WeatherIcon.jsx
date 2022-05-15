@@ -23,9 +23,9 @@ import {
 
 const WeatherIcon = ({ weather, time, size }) => {
     const weatherTypeDay = {
-        Cloud: ["broken clouds: 51-84%"],
-        Cloudy: ["overcast clouds: 85-100%"],
-        DayCloudy: ["scattered clouds: 25-50%"],
+        Cloud: ["broken clouds"],
+        Cloudy: ["overcast clouds"],
+        DayCloudy: ["scattered clouds"],
         Rain: [
             "heavy intensity rain",
             "very heavy rain",
@@ -75,12 +75,12 @@ const WeatherIcon = ({ weather, time, size }) => {
             "shower drizzle",
         ],
         Sandstorm: ["sand/ dust whirls", "dust"],
-        DaySunnyOvercast: ["few clouds: 11-25%"],
+        DaySunnyOvercast: ["few clouds"],
         Smog: ["volcanic ash", "Smoke", "sand"],
     };
     const weatherTypeNight = {
-        Cloud: ["broken clouds: 51-84%"],
-        Cloudy: ["overcast clouds: 85-100%"],
+        Cloud: ["broken clouds"],
+        Cloudy: ["overcast clouds"],
         Rain: [
             "heavy intensity rain",
             "very heavy rain",
@@ -129,9 +129,9 @@ const WeatherIcon = ({ weather, time, size }) => {
             "heavy shower rain and drizzle",
             "shower drizzle",
         ],
-        NightAltCloudy: ["scattered clouds: 25-50%"],
+        NightAltCloudy: ["scattered clouds"],
         Sandstorm: ["sand/ dust whirls", "dust"],
-        NightAltPartlyCloudy: ["few clouds: 11-25%"],
+        NightAltPartlyCloudy: ["few clouds"],
         Smog: ["volcanic ash", "Smoke", "sand"],
     };
 

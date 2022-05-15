@@ -1,16 +1,28 @@
 import "./style.scss";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { getCoordinatesFromName } from "../actions/locationActions";
-// import PropTypes from "prop-types";
+import { appContext } from "../AppContext";
 
 const SearchItem = (output) => {
+    const { dispatch } = useContext(appContext);
+
+    const select = () => {
+        dispatch({
+            type: "SET_CURRENT_LOCATION",
+            payload: {
+                currentLocation: output.output,
+            },
+        });
+    };
+
     if (output.output) {
         const name = output.output.name;
         const state = output.output.state;
         const country = output.output.country;
-        console.log(output.output);
         return (
-            <div className="search-item">{`${name}${state ? `, ${state}` : ""}, ${country}`}</div>
+            <div className="search-item" onClick={select}>
+                {`${name}${state ? `, ${state}` : ""}, ${country}`}
+            </div>
         );
     } else {
         return <></>;
@@ -44,7 +56,5 @@ const Searchbar = () => {
         </div>
     );
 };
-
-// Searchbar.propTypes = {};
 
 export default Searchbar;

@@ -4,7 +4,6 @@ const apiKey = process.env.REACT_APP_API_KEY;
 
 export const getCoordinatesFromName = async (name) => {
     try {
-        console.log(name);
         const res = await axios.get("http://api.openweathermap.org/geo/1.0/direct", {
             params: { limit: 5, appid: apiKey, q: name },
         });
