@@ -26,14 +26,13 @@ export default function LocationSearch() {
         e.preventDefault();
         axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=a1b3aa55dfdd1a4c2918936703528115`)
             .then(res => {
-                console.log('fetched');
                 setError('');
                 const data = res.data;
-                if (!data.length) {
+                if (data.length) {
+                    saveCity(data[0]);
+                } else {
                     setError('City not found!');
-                    return;
                 }
-                saveCity(data[0]);
                 setOpen(true);
             })
             .catch(() => {
