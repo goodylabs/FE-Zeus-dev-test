@@ -20,7 +20,7 @@ const ChartBox = () => {
 
     useEffect(() => {
         let doit;
-        const onresize = (e) => {
+        const onresize = () => {
             clearTimeout(doit);
             setLoading(true);
             doit = setTimeout(() => {
