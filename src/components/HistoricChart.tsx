@@ -1,6 +1,4 @@
 import { FunctionComponent, useState } from 'react';
-import { Line } from 'react-chartjs-2';
-import { useQueries } from 'react-query';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,41 +9,22 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import { UseQueryResult } from 'react-query';
 import DateService from '../services/DateService';
-import WeatherService from '../services/WeatherService';
-import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
+import WeatherHistoricResponse from '../types/WeatherHistoricResponse';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-interface IPropsHistoricWeatherContainer {
-  latitude: number;
-  longitude: number;
+interface IPropsHistoricChart {
+  weatherData: UseQueryResult<WeatherHistoricResponse, Error>[];
 }
 
-const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer> = ({ latitude, longitude }) => {
-  const [error, setError] = useState<string | null>(null);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
+const HistoricChart: FunctionComponent<IPropsHistoricChart> = ({ weatherData }) => {
   const [dataToDisplay, setDataToDisplay] = useState<{ label: string; data: (number | undefined)[] }>({
     label: 'pick a statistic',
     data: [],
   });
-  const days = [
-    DateService.getDateFromGivenDaysAgo(5),
-    DateService.getDateFromGivenDaysAgo(4),
-    DateService.getDateFromGivenDaysAgo(3),
-    DateService.getDateFromGivenDaysAgo(2),
-    DateService.getDateFromGivenDaysAgo(1),
-  ];
-
-  const queryResults = useQueries(
-    days.map((day) => ({
-      queryKey: ['historical-data', day],
-      queryFn: () => WeatherService.fetchHistoric(day, latitude, longitude),
-      onError: (err: Error) => {
-        setError(err.message);
-      },
-      enabled: false,
-    })),
-  );
-
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -58,7 +37,6 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
       },
     },
   };
-
   const renderChart = () => {
     const labels: Array<string> = [];
     const datasets: Array<{
@@ -67,7 +45,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
       borderColor: string;
       backgroundColor: string;
     }> = [];
-    queryResults.forEach((result) => {
+    weatherData.forEach((result) => {
       if (result.data) {
         labels.push(DateService.getTimeFromEpoch(result.data?.current.dt).split(',')[0]);
       }
@@ -80,17 +58,8 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
     });
     return <Line options={chartOptions} data={{ labels, datasets }} />;
   };
-
-  if (queryResults[4].isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  return queryResults.map((result) => result.isSuccess).length === 5 ? (
-    <div className="container mt-4 border">
+  return (
+    <>
       <div className="mt-3 mb-2 d-flex justify-content-around input-group">
         <input
           type="radio"
@@ -99,7 +68,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           name="options"
           defaultChecked={dataToDisplay.label === 'Temperature'}
           onClick={() =>
-            setDataToDisplay({ label: 'Temperature', data: queryResults.map((day) => day.data?.current.temp) })
+            setDataToDisplay({ label: 'Temperature', data: weatherData.map((day) => day.data?.current.temp) })
           }
         />
         <label className="btn btn-outline-primary" htmlFor="temperature-btn">
@@ -114,7 +83,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           onClick={() =>
             setDataToDisplay({
               label: 'Atmospheric pressure',
-              data: queryResults.map((day) => day.data?.current.pressure),
+              data: weatherData.map((day) => day.data?.current.pressure),
             })
           }
         />
@@ -128,7 +97,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           name="options"
           defaultChecked={dataToDisplay.label === 'Wind Speed'}
           onClick={() =>
-            setDataToDisplay({ label: 'Wind Speed', data: queryResults.map((day) => day.data?.current.wind_speed) })
+            setDataToDisplay({ label: 'Wind Speed', data: weatherData.map((day) => day.data?.current.wind_speed) })
           }
         />
         <label className="btn btn-outline-primary" htmlFor="wind-btn">
@@ -141,7 +110,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           name="options"
           defaultChecked={dataToDisplay.label === 'Humidity'}
           onClick={() =>
-            setDataToDisplay({ label: 'Humidity', data: queryResults.map((day) => day.data?.current.humidity) })
+            setDataToDisplay({ label: 'Humidity', data: weatherData.map((day) => day.data?.current.humidity) })
           }
         />
         <label className="btn btn-outline-primary" htmlFor="humidity-btn">
@@ -149,8 +118,8 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
         </label>
       </div>
       <div>{renderChart()}</div>
-    </div>
-  ) : null;
+    </>
+  );
 };
 
-export default HistoricWeatherContainer;
+export default HistoricChart;
