@@ -11,8 +11,6 @@ const WeatherChartCard = (props) => {
 
    let date = new Date(props.day * 1000);
 
-   console.log(props.weather);
-
    return (
       <div className="weather-chart-card-container">
          <p>{date.toLocaleDateString()}</p>
