@@ -1,0 +1,39 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locationLabel {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.locationInput {
+  width: 40%;
+  border: none;
+  border-radius: 6px;
+  height: 1.1rem;
+}
+
+.locationSubmit {
+  background-color: var(--dark-blue);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  color: var(--bg-color);
+  text-decoration: none;
+  margin: 6px 3px;
+  cursor: pointer;
+}
+
+.locationSubmit:hover {
+  background-color: var(--bg-color);
+  color: var(--dark-blue);
+}
+
+.errorText {
+  color: red;
+  font-size: 1.4rem;
+  font-weight: 500;
+}

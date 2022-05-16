@@ -1,0 +1,14 @@
+.chartElem {
+  width: 30px;
+  background-color: var(--dark-blue);
+  border: 2px solid #2f4f4f;
+  border-radius: 6px;
+}
+
+.chartElemContainer {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
