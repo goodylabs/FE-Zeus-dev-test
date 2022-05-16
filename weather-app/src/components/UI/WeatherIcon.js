@@ -5,7 +5,7 @@ const WeatherIcon = ({ width = "200px", height = "200px" }) => {
 
   return (
     <img
-      src={`http://openweathermap.org/img/wn/${weather.icon_id}@2x.png`}
+      src={`https://openweathermap.org/img/wn/${weather.icon_id}@2x.png`}
       alt={weather.weather_description}
       style={{
         width,

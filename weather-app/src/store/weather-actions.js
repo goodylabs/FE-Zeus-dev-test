@@ -1,5 +1,4 @@
 import { weatherActions } from "./weather-slice";
-import moment from "moment";
 import axios from "axios";
 
 export const windDirectionCalculation = (windDegree) => {
@@ -43,11 +42,6 @@ export const windDirectionCalculation = (windDegree) => {
 
 export const fetchCurrentWeatherData = (searchedLocation) => {
   return (dispatch) => {
-    const dateTo = moment().utcOffset().valueOf();
-    const dateFrom = moment().subtract(5, "d").utcOffset().valueOf();
-
-    console.log(dateTo);
-
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${searchedLocation}&appid=${process.env.REACT_APP_WEATHER_KEY}`

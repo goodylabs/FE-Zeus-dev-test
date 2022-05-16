@@ -7,7 +7,7 @@ export const fetchHistoricalWeatherData = (searchedLocation) => {
   return (dispatch) => {
     axios
       .get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${searchedLocation}&limit=1&appid=${process.env.REACT_APP_WEATHER_KEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${searchedLocation}&limit=1&appid=${process.env.REACT_APP_WEATHER_KEY}`
       )
       .then((responseGeo) => {
         const lat = responseGeo.data[0].lat;
