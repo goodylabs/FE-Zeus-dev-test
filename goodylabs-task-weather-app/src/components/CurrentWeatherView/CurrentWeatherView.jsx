@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import "./style.scss";
 import degToDirection from "../../util/degToCompass";
 import weatherEmojis from "../../util/weatherEmojis";
+import { LocationContext } from "../../context/LocationContext";
 
 const CurrentWeatherView = (props) => {
    let isDay = false;
+
+   const { state } = useContext(LocationContext);
 
    if (
       props.response.current.dt >= props.response.current.sunrise &&
@@ -12,6 +15,8 @@ const CurrentWeatherView = (props) => {
    ) {
       isDay = true;
    }
+
+   useEffect(() => {}, [state.location]);
 
    return (
       <div className="current-weather-view-container">

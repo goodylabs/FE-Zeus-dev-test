@@ -11,7 +11,9 @@ function weatherEmojis(code, isDay) {
       return weathers[5];
    } else if (code > 800) {
       return weathers[6];
-   } else return weathers[String(code)[0]];
+   } else {
+      return weathers[parseInt(String(code)[0]) - 1];
+   }
 }
 
 export default weatherEmojis;

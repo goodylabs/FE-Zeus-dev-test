@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.scss";
 import axios from "axios";
 import CurrentWeatherView from "./components/CurrentWeatherView/CurrentWeatherView";
@@ -6,17 +6,14 @@ import HistoricalWeatherChart from "./components/HistoricalWeatherChart/Historic
 import ClockBox from "./components/Clock/Clock";
 import requesturls from "./util/requesturls";
 import LocationSearchCard from "./components/LocationSearchCard/LocationSearchCard";
+import { LocationContext } from "./context/LocationContext";
 
 const App = () => {
    let [res, setRes] = useState();
-   // let [locData, setLocData] = useState();
 
    let day = 86400;
 
-   let location = {
-      lat: 51.7833,
-      lon: 19.4667,
-   };
+   const { state } = useContext(LocationContext);
 
    useEffect(() => {
       let date = new Date();
@@ -27,7 +24,8 @@ const App = () => {
          Math.floor(date.getTime() / 1000 - day * 2),
          Math.floor(date.getTime() / 1000 - day * 1),
       ];
-      let endpoints = requesturls(location.lat, location.lon, t);
+
+      let endpoints = requesturls(state.location.lat, state.location.lon, t);
 
       let p = [
          axios.get(endpoints[0]),
@@ -40,7 +38,7 @@ const App = () => {
       ];
 
       Promise.all(p).then((dataAll) => setRes(dataAll));
-   }, []);
+   }, [state.location]);
 
    return (
       <div className="App">
