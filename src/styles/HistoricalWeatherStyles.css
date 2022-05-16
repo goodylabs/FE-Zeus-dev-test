@@ -1,0 +1,8 @@
+.hw-container {
+    width: 100vw;
+    height: 46vh;
+    background-image: linear-gradient(antiquewhite, burlywood);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

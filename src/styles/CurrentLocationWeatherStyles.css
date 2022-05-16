@@ -1,0 +1,31 @@
+.clw-container {
+    width: 100vw;
+    height: 45vh;
+    background-image: linear-gradient(white, antiquewhite);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-container {
+    width: 50%;
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.data-container {
+    width: 20%;
+    height: 50%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.data-container p:not(:first-child) {
+    margin-left: 1rem;
+}

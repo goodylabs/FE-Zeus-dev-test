@@ -1,0 +1,14 @@
+.header-container {
+    width: 100vw;
+    height: 9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.header-container h2 {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
