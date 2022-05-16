@@ -1,17 +1,40 @@
+@import "../../variables.scss";
+
 .weather-panel {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    & > div {
+    @include lg {
+        width: 35rem;
+        max-height: 100vh;
+    }
+
+    &_wrapper {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 1.5rem;
-        bottom: 15%;
-        left: 10rem;
+        @include lg {
+            overflow-y: scroll;
+            padding: 3rem 0;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
         & > div {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 1.5rem;
+            bottom: 15%;
+            left: 10rem;
+
+            @include lg {
+                flex-direction: column;
+            }
+            & > div {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
         }
     }
 }

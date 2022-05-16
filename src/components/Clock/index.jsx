@@ -36,7 +36,7 @@ const Clock = ({ date, size }) => {
                         height: `${size * 0.3}rem`,
                         width: `${size * 0.03}rem`,
                         transform: `translateX(-50%) rotate(${
-                            360 / (60 / (date.getHours() % 12))
+                            360 / (60 / date.getHours() / 5)
                         }deg)`,
                     }}
                 />

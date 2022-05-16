@@ -7,14 +7,16 @@ import ChartBox from "../ChartBox";
 const WeatherPanel = () => {
     return (
         <div className="weather-panel">
-            <div>
-                <LiveTime></LiveTime>
+            <div className="weather-panel_wrapper">
                 <div>
-                    <CurrentWeatherBox />
-                    <FutureWeatherBox />
+                    <LiveTime></LiveTime>
+                    <div>
+                        <CurrentWeatherBox />
+                        <FutureWeatherBox />
+                    </div>
                 </div>
+                <ChartBox />
             </div>
-            <ChartBox />
         </div>
     );
 };

@@ -5,4 +5,9 @@
         font-size: var(--font-size-4);
         text-align: center;
     }
+    .spinner {
+        animation: var(--animation-spin);
+        margin: 0 auto;
+        transform: scale(2);
+    }
 }
