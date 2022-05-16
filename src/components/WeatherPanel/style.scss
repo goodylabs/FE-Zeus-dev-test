@@ -1,13 +1,18 @@
 .weather-panel {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1.5rem;
-    // position: absolute;
-    bottom: 15%;
-    left: 10rem;
     & > div {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 1.5rem;
+        // position: absolute;
+        bottom: 15%;
+        left: 10rem;
+        & > div {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
     }
 }

@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 
 const appReducer = (state, action) => {
     switch (action.type) {
-        case "SET_CURRENT_WEATHER_DATA": {
+        case "SET_WEATHER_DATA": {
             return {
                 ...state,
-                currentWeatherData: action.payload,
+                weatherData: action.payload,
             };
         }
         case "SET_HISTORY_WEATHER_DATA": {
-            console.log(action);
             return {
                 ...state,
                 historyWeatherData: action.payload,
@@ -22,13 +21,19 @@ const appReducer = (state, action) => {
                 currentLocation: action.payload.currentLocation,
             };
         }
+        case "SET_CHART_DATA": {
+            return {
+                ...state,
+                chartData: action.payload,
+            };
+        }
     }
 };
 const appContext = createContext();
 
 const AppProvider = ({ children }) => {
     const initialState = {
-        currentWeatherData: undefined,
+        weatherData: undefined,
         historyWeatherData: undefined,
         currentLocation: {
             country: "PL",
@@ -37,6 +42,7 @@ const AppProvider = ({ children }) => {
             name: "Łódź",
             state: "Łódź Voivodeship",
         },
+        chartData: undefined,
     };
     const [state, dispatch] = useReducer(appReducer, initialState);
 

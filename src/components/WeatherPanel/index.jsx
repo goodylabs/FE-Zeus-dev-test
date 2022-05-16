@@ -1,16 +1,20 @@
 import "./style.scss";
 import CurrentWeatherBox from "../CurrentWeatherBox";
-import HistoryWeatherBox from "../HistoryWeatherBox";
+import FutureWeatherBox from "../FutureWeatherBox";
 import LiveTime from "../LiveTime";
+import ChartBox from "../ChartBox";
 
 const WeatherPanel = () => {
     return (
         <div className="weather-panel">
-            <LiveTime></LiveTime>
             <div>
-                <CurrentWeatherBox />
-                <HistoryWeatherBox />
+                <LiveTime></LiveTime>
+                <div>
+                    <CurrentWeatherBox />
+                    <FutureWeatherBox />
+                </div>
             </div>
+            <ChartBox />
         </div>
     );
 };

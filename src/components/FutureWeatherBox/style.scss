@@ -1,15 +1,23 @@
 .history-weather-box {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    overflow-x: scroll;
-    flex-wrap: nowrap;
     height: 100%;
     width: 32rem;
     position: relative;
 
-    &::-webkit-scrollbar {
-        display: none;
+    &_title {
+        font-size: var(--font-size-4);
+        text-align: center;
+    }
+
+    &_list {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        margin: 0.5rem 0;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .weather-element {

@@ -10,12 +10,12 @@ const App = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const currentWeatherData = await getCurrentWeather(
+            const weatherData = await getCurrentWeather(
                 state.currentLocation.lat,
                 state.currentLocation.lon,
                 "metric"
             );
-            dispatch({ type: "SET_CURRENT_WEATHER_DATA", payload: currentWeatherData });
+            dispatch({ type: "SET_WEATHER_DATA", payload: weatherData });
             const historyWeatherData = await getHistoryWeather(
                 state.currentLocation.lat,
                 state.currentLocation.lon,
@@ -24,8 +24,25 @@ const App = () => {
             dispatch({ type: "SET_HISTORY_WEATHER_DATA", payload: historyWeatherData });
         };
         getData();
-        console.log(state);
     }, [state.currentLocation]);
+
+    useEffect(() => {
+        const chartData = [];
+        state.historyWeatherData?.forEach((dayData) => {
+            dayData.hourly?.forEach((hourData) => {
+                const date = new Date(hourData.dt * 1000);
+                chartData.push({
+                    name: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${String(
+                        date.getHours()
+                    ).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`,
+                    temperature: hourData.temp,
+                    humidity: hourData.humidity,
+                    pressure: hourData.pressure,
+                });
+            });
+        });
+        dispatch({ type: "SET_CHART_DATA", payload: chartData });
+    }, [state.historyWeatherData]);
 
     return (
         <div className="App">
