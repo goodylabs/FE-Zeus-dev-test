@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useMemo, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useQueries } from 'react-query';
 import {
@@ -24,7 +24,7 @@ interface IPropsHistoricWeatherContainer {
 const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer> = ({ latitude, longitude }) => {
   const [error, setError] = useState<string | null>(null);
   const [dataToDisplay, setDataToDisplay] = useState<{ label: string; data: (number | undefined)[] }>({
-    label: 'loading',
+    label: 'pick a statistic',
     data: [],
   });
   const days = [
@@ -73,7 +73,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
       }
     });
     datasets.push({
-      label: 'Temperature',
+      label: dataToDisplay?.label,
       data: dataToDisplay?.data,
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -97,7 +97,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           className="btn-check"
           id="temperature-btn"
           name="options"
-          defaultChecked
+          defaultChecked={dataToDisplay.label === 'Temperature'}
           onClick={() =>
             setDataToDisplay({ label: 'Temperature', data: queryResults.map((day) => day.data?.current.temp) })
           }
@@ -110,6 +110,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           className="btn-check"
           id="pressure-btn"
           name="options"
+          defaultChecked={dataToDisplay.label === 'Atmospheric pressure'}
           onClick={() =>
             setDataToDisplay({
               label: 'Atmospheric pressure',
@@ -125,6 +126,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           className="btn-check"
           id="wind-btn"
           name="options"
+          defaultChecked={dataToDisplay.label === 'Wind Speed'}
           onClick={() =>
             setDataToDisplay({ label: 'Wind Speed', data: queryResults.map((day) => day.data?.current.wind_speed) })
           }
@@ -137,6 +139,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
           className="btn-check"
           id="humidity-btn"
           name="options"
+          defaultChecked={dataToDisplay.label === 'Humidity'}
           onClick={() =>
             setDataToDisplay({ label: 'Humidity', data: queryResults.map((day) => day.data?.current.humidity) })
           }
