@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from 'react';
 import CurrentWeatherContainer from './CurrentWeatherContainer';
-import HistoricWeatherContainer from './HistoricWeatherChart';
+import HistoricWeatherContainer from './HistoricWeatherChartContainer';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const AppContainer: FunctionComponent = () => {
