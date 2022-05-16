@@ -22,4 +22,4 @@ Secendly, I want to get my feedback on my work and talk about how I done it :)
 2. Deployed project:
   - to see deployed project go to https://remarkable-kulfi-d088cb.netlify.app/
 
-#Thank you and see you soon :)
+# Thank you and see you soon :)
