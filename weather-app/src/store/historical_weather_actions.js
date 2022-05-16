@@ -39,8 +39,16 @@ export const fetchHistoricalWeatherData = (searchedLocation) => {
                   humidity: response.data.hourly[10].humidity,
                 })
               );
+            })
+            .catch((error) => {
+              console.log(
+                `Error with fetching historical weather data: ${error}`
+              );
             });
         }
+      })
+      .catch((error) => {
+        console.log(`Error with fetching geolocation data: ${error}`);
       });
   };
 };
