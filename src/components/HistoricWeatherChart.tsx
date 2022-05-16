@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useQueries } from 'react-query';
 import {
@@ -42,7 +42,7 @@ const HistoricWeatherContainer: FunctionComponent<IPropsHistoricWeatherContainer
       onError: (err: Error) => {
         setError(err.message);
       },
-      // enabled: false,
+      enabled: false,
     })),
   );
 
