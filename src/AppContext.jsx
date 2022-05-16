@@ -27,6 +27,12 @@ const appReducer = (state, action) => {
                 chartData: action.payload,
             };
         }
+        case "SET_SEARCH_HISTORY": {
+            return {
+                ...state,
+                searchHistory: action.payload,
+            };
+        }
     }
 };
 const appContext = createContext();
@@ -43,6 +49,7 @@ const AppProvider = ({ children }) => {
             state: "Łódź Voivodeship",
         },
         chartData: undefined,
+        searchHistory: [],
     };
     const [state, dispatch] = useReducer(appReducer, initialState);
 

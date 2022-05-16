@@ -16,10 +16,8 @@
         }
         &_search-items {
             position: absolute;
-            // background-color: rgba(184, 135, 11, 0.39);
             padding-top: 0.2rem;
             width: 90%;
-            // top: 1rem;
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
@@ -27,13 +25,17 @@
             transform: translateX(-50%);
             .search-item {
                 font-size: var(--font-size-0);
-                // height: 2rem;
                 display: flex;
                 align-items: center;
                 padding: 0.4rem 0.9rem;
                 background-color: hsla(0, 0%, 0%, 15%);
                 border-radius: 5rem;
                 user-select: none;
+                transition: background-color 0.1s ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: hsla(0, 0%, 10%, 15%);
+                }
             }
         }
     }

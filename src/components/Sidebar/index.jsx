@@ -1,4 +1,5 @@
-import Searchbar from "../../Searchbar";
+import Searchbar from "../Searchbar";
+import SearchHistory from "../SearchHistory";
 import "./style.scss";
 
 const Sidebar = () => {
@@ -6,6 +7,7 @@ const Sidebar = () => {
         <div className="sidebar">
             <div className="sidebar_wrapper">
                 <Searchbar />
+                <SearchHistory />
             </div>
         </div>
     );

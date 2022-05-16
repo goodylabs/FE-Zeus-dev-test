@@ -44,6 +44,19 @@ const App = () => {
         dispatch({ type: "SET_CHART_DATA", payload: chartData });
     }, [state.historyWeatherData]);
 
+    useEffect(() => {
+        if (state.searchHistory.length != 0) {
+            localStorage.setItem("searchHistory", JSON.stringify(state.searchHistory));
+        }
+    }, [state.searchHistory]);
+
+    useEffect(() => {
+        const history = localStorage.getItem("searchHistory");
+        if (history) {
+            dispatch({ type: "SET_SEARCH_HISTORY", payload: JSON.parse(history) });
+        }
+    }, []);
+
     return (
         <div className="App">
             <div className="main-content-wrapper">
