@@ -1,0 +1,37 @@
+@import "../../variables.scss";
+
+.history-weather-box {
+    height: 100%;
+    width: 32rem;
+    position: relative;
+
+    &_title {
+        font-size: var(--font-size-4);
+        text-align: center;
+    }
+
+    &_list {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        margin: 0.5rem 0;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .weather-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 4.5rem;
+        &_temperature {
+            font-size: var(--font-size-4);
+        }
+        &_day {
+            font-size: var(--font-size-2);
+        }
+    }
+}

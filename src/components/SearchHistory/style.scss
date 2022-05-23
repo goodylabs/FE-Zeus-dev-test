@@ -1,0 +1,33 @@
+.search-history {
+    grid-row-end: 3;
+    &_title {
+        font-size: var(--font-size-3);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    &_list {
+        height: calc(100% - 3rem);
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        bottom: 0;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .search-history-item {
+        background-color: hsla(0, 0%, 0%, 15%);
+        padding: 0.9rem;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        transition: background-color 0.1s ease-in-out;
+        justify-content: center;
+        &:hover {
+            background-color: hsla(0, 0%, 10%, 15%);
+        }
+    }
+}

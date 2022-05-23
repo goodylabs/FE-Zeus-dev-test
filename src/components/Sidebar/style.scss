@@ -1,0 +1,51 @@
+@import "../../variables.scss";
+
+.sidebar {
+    min-width: 25rem;
+    background-color: hsl(0, 0%, 0%, 30%);
+    backdrop-filter: blur(8px);
+    color: var(--gray-0);
+    height: 100vh;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+
+    @include xl {
+        display: flex;
+        flex-direction: row;
+        right: 0;
+        transform: translateX(calc(100% - 3rem));
+        position: absolute;
+        align-items: center;
+        &.open {
+            transform: translateX(0);
+        }
+    }
+    &_wrapper {
+        padding: 2rem 1.5rem;
+        display: grid;
+        grid-template-rows: 15rem calc(100vh - 19rem);
+        @include xl {
+            width: 100%;
+        }
+    }
+
+    &_opener {
+        display: none;
+        @include xl {
+            backdrop-filter: blur(8px);
+            height: 3rem;
+            width: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(0);
+            cursor: pointer;
+            &_icon {
+                font-size: var(--font-size-4);
+                &.open {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}

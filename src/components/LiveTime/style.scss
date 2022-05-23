@@ -1,0 +1,43 @@
+.live-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+    &_time {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.5rem;
+
+        & > div {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            font-size: var(--font-size-6);
+        }
+
+        &_seconds {
+            font-size: var(--font-size-5);
+        }
+    }
+    &_date {
+        font-size: var(--font-size-3);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        & > div {
+            display: flex;
+            gap: 0.5rem;
+        }
+        &_day {
+            display: flex;
+            &_suffix {
+                font-size: var(--font-size-2);
+            }
+        }
+    }
+}
